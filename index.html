@@ -15,18 +15,19 @@
 <body>
     <div id="app">
         <div class="container">
-            <div class="header">
-                <h1>My albums</h1>
-                <h4>What kind of music do you want to listen today?</h4>
-                <select name="Genres" id="">
-                    <option value="">Lalala</option>
+            <div class="header py-4 mb-3">
+                <h1 class="text-center">My albums</h1>
+                <h4 class="d-inline">What kind of music do you want to listen today?</h4>
+                <select name="Genres" id="" @change="setGenre">
+                    <option value=""> - </option>
+                    <option v-for="genre in genres" :value="genre">{{genre}}</option>
                 </select>
             </div>
 
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col" v-for="album in albumList">
+                <div class="col" v-for="album in getAlbums">
                     <div class="card h-100">
-                        <img :src="album.poster" class="card-img-top" alt="...">
+                        <img :src="album.poster" class="card-img-top h-75 d-inline-block" alt="...">
                         <div class="card-body">
                              <h4 class="card-title">{{album.title}}</h4>
                              <div class="card-text">
